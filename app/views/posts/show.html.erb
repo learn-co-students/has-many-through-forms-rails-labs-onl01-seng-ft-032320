@@ -1,1 +1,12 @@
-
+<%= link_to @post.title, post_path(@post) %>
+<p><%= @post.content %></p>
+<% @post.category_ids.each do |cat|%>
+    <p>Categories: <%= Category.find_by_id(cat).name %></p>
+<% end %>
+<% @post.users.each do |user| %>
+    <%= user.username %>
+<% end %>
+<% @post.comments.each do |comm| %>
+    <%= comm.title %>
+    <%= comm.content %>
+<%end%>
