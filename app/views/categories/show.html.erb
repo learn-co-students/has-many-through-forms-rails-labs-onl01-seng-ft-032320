@@ -1,0 +1,17 @@
+<h1>Categories</h1>
+
+<% @category.posts.each do |post| %>
+    <p> 
+        <%= link_to post.title, post_path(post) %><br>
+        Title: <%= post.title %><br>
+        Content: <%= post.content %><br>
+        <em>Comments:</em>
+        <% post.comments.each do |comm| %>
+        <br>
+            <%= comm.user.username %> : <%= comm.content %>
+        <% end %>
+    </p>
+<% end %>
+
+
+<h3>Add a comment:</h3>
