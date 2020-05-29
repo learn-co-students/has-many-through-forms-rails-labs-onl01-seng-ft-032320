@@ -7,7 +7,7 @@
 <h3>Comments</h3>
 <ul>
     <% @post.comments.each do |comment|%>
-        <li><%= comment.content %></li>
+        <li><%= comment.user.username %> says: <%= comment.content %></li>
     <% end %>
 </ul>
 
@@ -18,7 +18,7 @@
 
     <%= f.label "Select User: " %>
     <%= f.collection_select :user_id, User.all, :id, :username, include_blank: true %> <br>
-    <%= fields_for :user, User.new do |ff| %>
+    <%= f.fields_for :user, User.new do |ff| %>
         <%= ff.label :username %>
         <%= ff.text_field :username %> <br> 
     <% end %>
