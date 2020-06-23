@@ -10,6 +10,6 @@ class CategoriesController < ApplicationController
         @posts << Post.find_by(id: pc.post_id)
       end
     end
-
   end
+
 end
