@@ -1,6 +1,14 @@
 class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
+    @users = []
+
+    @post.comments.each do |comment|
+      if !@users.include?(comment.user)
+        @users << comment.user
+      end
+    end
+
   end
 
   def index
@@ -9,6 +17,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.categories.build
   end
 
   def create
